@@ -266,22 +266,23 @@ int main()
 {
 
     cout << endl;
-    
+
     cout << "Hello! Welcome to 'Restaurant Finder'!" << endl;
     int decision1 = 0, decision2 = 0, decision3 = 0;
 
     cout << endl;
 
-    cout << "Would you like to use..." << endl;
-    cout << "(Type '1') Edge List" << endl;
-    cout << "(Type '2') Adjacency List" << endl;
-    cout << "(Type '3') Exit" << endl;
-    cin >> decision1;
+    while(true && decision2 != 4) {
+        cout << "Would you like to use..." << endl;
+        cout << "(Type '1') Edge List" << endl;
+        cout << "(Type '2') Adjacency List" << endl;
+        cout << "(Type '3') Exit" << endl;
+        cin >> decision1;
 
-    cout << endl;
+        cout << endl;
 
-    edgeList graph;
-    if(decision1 == 1) {
+        edgeList graph;
+        if (decision1 == 1) {
             // Create new adjacencyList
 
             //Randomly insert 100 "restaurants" into adjacency list
@@ -298,144 +299,145 @@ int main()
                 graph.insertEdge(rest);
             }
             cout << "Loading Edge List..." << endl;
+        } else if (decision1 == 2) {
+            cout << "Loading Adajacency List..." << endl;
+        } else if (decision1 == 3) {
+            return 0;
         }
-    else if(decision1 == 2) {
-        cout << "Loading Adajacency List..." << endl;
-    }
-    else if(decision1 == 3) {
-        return 0;
-    }
-    while(decision2 != 4) {
-        cout << "What would you like to do today?" << endl;
-        cout << "(Type '1') Find a random restaurant" << endl;
-        cout << "(Type '2') Print all restaurants in a specific food category" << endl;
-        cout << "(Type '4') Exit" << endl;
-        cin >> decision2;
+        while (decision2 != 4) {
+            cout << "What would you like to do today?" << endl;
+            cout << "(Type '1') Find a random restaurant" << endl;
+            cout << "(Type '2') Print all restaurants in a specific food category" << endl;
+            cout << "(Type '3') New list" << endl;
+            cout << "(Type '4') Exit" << endl;
+            cin >> decision2;
 
-        cout << endl;
-    if(decision2 < 4) {
-        cout << "What type of food are you in the mood for?" << endl;
-        cout << "(Type '1') American" << endl;
-        cout << "(Type '2') Mexican" << endl;
-        cout << "(Type '3') Italian" << endl;
-        cout << "(Type '4') Greek" << endl;
-        cout << "(Type '5') Sandwiches" << endl;
-        cout << "(Type '6') French" << endl;
-        cout << "(Type '7') Baked Goods" << endl;
-        cout << "(Type '8') Beverages" << endl;
-        cout << "(Type '9') Frozen Desserts" << endl;
-        cout << "(Type '10') Chinese" << endl;
-        cout << "(Type '11') Japanese" << endl;
-        cout << "(Type '12') Salad" << endl;
-        cout << "(Type '13') Chicken" << endl;
-        cout << "(Type '14') Indian" << endl;
-        cout << "(Type '15') Pizza" << endl;
-        cout << "(Type '16') Seafood" << endl;
-        cout << "(Type '17') Vegan" << endl;
-        cout << "(Type '18') Steak" << endl;
-        cout << "(Type '19') Theme Dining" << endl;
-        cout << "(Type '20') Thai" << endl;
+            if (decision2 == 3) break;
+            cout << endl;
+            if (decision2 < 4) {
+                cout << "What type of food are you in the mood for?" << endl;
+                cout << "(Type '1') American" << endl;
+                cout << "(Type '2') Mexican" << endl;
+                cout << "(Type '3') Italian" << endl;
+                cout << "(Type '4') Greek" << endl;
+                cout << "(Type '5') Sandwiches" << endl;
+                cout << "(Type '6') French" << endl;
+                cout << "(Type '7') Baked Goods" << endl;
+                cout << "(Type '8') Beverages" << endl;
+                cout << "(Type '9') Frozen Desserts" << endl;
+                cout << "(Type '10') Chinese" << endl;
+                cout << "(Type '11') Japanese" << endl;
+                cout << "(Type '12') Salad" << endl;
+                cout << "(Type '13') Chicken" << endl;
+                cout << "(Type '14') Indian" << endl;
+                cout << "(Type '15') Pizza" << endl;
+                cout << "(Type '16') Seafood" << endl;
+                cout << "(Type '17') Vegan" << endl;
+                cout << "(Type '18') Steak" << endl;
+                cout << "(Type '19') Theme Dining" << endl;
+                cout << "(Type '20') Thai" << endl;
 
-        cin >> decision3;
-    }
-
-
-
-        /********** ALGORITHM 1 **********/
-        if (decision1 == 1) {
-            string foodType;
-            switch (decision3) {
-                case 1:
-                    foodType = "American";
-                    break;
-                case 2:
-                    foodType = "Mexican";
-                    break;
-                case 3:
-                    foodType = "Italian";
-                    break;
-                case 4:
-                    foodType = "Greek";
-                    break;
-                case 5:
-                    foodType = "Sandwiches";
-                    break;
-                case 6:
-                    foodType = "French";
-                    break;
-                case 7:
-                    foodType = "Baked Goods";
-                    break;
-                case 8:
-                    foodType = "Beverages";
-                    break;
-                case 9:
-                    foodType = "Frozen Desserts";
-                    break;
-                case 10:
-                    foodType = "Chinese";
-                    break;
-                case 11:
-                    foodType = "Japanese";
-                    break;
-                case 12:
-                    foodType = "Salad";
-                    break;
-                case 13:
-                    foodType = "Chicken";
-                    break;
-                case 14:
-                    foodType = "Indian";
-                    break;
-                case 15:
-                    foodType = "Pizza";
-                    break;
-                case 16:
-                    foodType = "Seafood";
-                    break;
-                case 17:
-                    foodType = "Vegan";
-                    break;
-                case 18:
-                    foodType = "Steak";
-                    break;
-                case 19:
-                    foodType = "Theme Dining";
-                    break;
-                case 20:
-                    foodType = "Thai";
-                    break;
+                cin >> decision3;
             }
-            // Find random restaurant given an edge
-            if (decision2 == 1) {
 
-                // INSERT CODE HERE USING ALGORITHM BASED CODE TO FIND RANDOM RESTAURANT
-                graph.searchRandRestaurants(foodType);
 
+
+            /********** ALGORITHM 1 **********/
+            if (decision1 == 1) {
+                string foodType;
+                switch (decision3) {
+                    case 1:
+                        foodType = "American";
+                        break;
+                    case 2:
+                        foodType = "Mexican";
+                        break;
+                    case 3:
+                        foodType = "Italian";
+                        break;
+                    case 4:
+                        foodType = "Greek";
+                        break;
+                    case 5:
+                        foodType = "Sandwiches";
+                        break;
+                    case 6:
+                        foodType = "French";
+                        break;
+                    case 7:
+                        foodType = "Baked Goods";
+                        break;
+                    case 8:
+                        foodType = "Beverages";
+                        break;
+                    case 9:
+                        foodType = "Frozen Desserts";
+                        break;
+                    case 10:
+                        foodType = "Chinese";
+                        break;
+                    case 11:
+                        foodType = "Japanese";
+                        break;
+                    case 12:
+                        foodType = "Salad";
+                        break;
+                    case 13:
+                        foodType = "Chicken";
+                        break;
+                    case 14:
+                        foodType = "Indian";
+                        break;
+                    case 15:
+                        foodType = "Pizza";
+                        break;
+                    case 16:
+                        foodType = "Seafood";
+                        break;
+                    case 17:
+                        foodType = "Vegan";
+                        break;
+                    case 18:
+                        foodType = "Steak";
+                        break;
+                    case 19:
+                        foodType = "Theme Dining";
+                        break;
+                    case 20:
+                        foodType = "Thai";
+                        break;
+                }
+                // Find random restaurant given an edge
+                if (decision2 == 1) {
+
+                    // INSERT CODE HERE USING ALGORITHM BASED CODE TO FIND RANDOM RESTAURANT
+                    graph.searchRandRestaurants(foodType);
+
+                }
+                // Prints all restaurants with same edge
+                if (decision2 == 2) {
+                    // INSERT CODE HERE USING ALGORITHM BASED CODE TO FIND ALL RESTAURANT WITHIN A FOOD CATEGORY AND PRINT ALL INFORMATION ON THEM
+                    graph.searchAllRestaurants(foodType);
+                }
             }
-            // Prints all restaurants with same edge
-            if (decision2 == 2) {
-                // INSERT CODE HERE USING ALGORITHM BASED CODE TO FIND ALL RESTAURANT WITHIN A FOOD CATEGORY AND PRINT ALL INFORMATION ON THEM
-                graph.searchAllRestaurants(foodType);
-            }
-        }
 
 
 
-        /********** ALGORITHM 2 **********/
-        if (decision1 == 2) {
+            /********** ALGORITHM 2 **********/
+            if (decision1 == 2) {
 
-            // Find random restaurant given an edge
-            if (decision2 == 1) {
+                // Find random restaurant given an edge
+                if (decision2 == 1) {
 
-                // INSERT CODE HERE USING ALGORITHM BASED CODE TO FIND RANDOM RESTAURANT
+                    // INSERT CODE HERE USING ALGORITHM BASED CODE TO FIND RANDOM RESTAURANT
 
-            }
-            // Prints all resaturants with same edge
-            if (decision2 == 2) {
+                }
+                // Prints all resaturants with same edge
+                if (decision2 == 2) {
 
-                // INSERT CODE HERE USING ALGORITHM BASED CODE TO FIND ALL RESTAURANT WITHIN A FOOD CATEGORY AND PRINT ALL INFORMATION ON THEM
+                    // INSERT CODE HERE USING ALGORITHM BASED CODE TO FIND ALL RESTAURANT WITHIN A FOOD CATEGORY AND PRINT ALL INFORMATION ON THEM
 
+                }
             }
         }
     }
