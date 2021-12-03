@@ -62,13 +62,12 @@ int restaurant::getRating()      { return rating; }
 
 
 
-/********** EDGELIST CLASS **********/
+/********** adjList CLASS **********/
 
-class edgeList {
+class adjList {
 
 private:
     map<string, vector<restaurant*>> graph;
-    map<string, vector<restaurant*>> :: iterator it;
 
 public:
     void insertEdge(restaurant* rest);
@@ -77,7 +76,7 @@ public:
 
 };
 
-void edgeList::insertEdge(restaurant* rest) {
+void adjList::insertEdge(restaurant* rest) {
 
     // The key is the restaurant type! (the edge is the restaurant type key word)
     // restaurants with the same type are connected through a vector of restaurants
@@ -99,7 +98,7 @@ void edgeList::insertEdge(restaurant* rest) {
     }
 
 }
-void edgeList::searchAllRestaurants(string decisions) {
+void adjList::searchAllRestaurants(string decisions) {
 
     vector<restaurant*> res = graph.find(decisions)->second;
 
@@ -133,7 +132,7 @@ void edgeList::searchAllRestaurants(string decisions) {
 
 
 }
-void edgeList::searchRandRestaurants(string decisions) {
+void adjList::searchRandRestaurants(string decisions) {
     vector<restaurant*> res = graph.find(decisions)->second;
     int randomVal = rand() % res.size();
     cout << "Restaurant Name: " << res.at(randomVal)->getRestName() << endl;
@@ -162,6 +161,57 @@ void edgeList::searchRandRestaurants(string decisions) {
     }
 
     cout << endl;
+
+
+}
+/********** EDGELIST CLASS **********/
+class Edge {
+
+private:
+//set the variables stored for each edge
+    restaurant* start;
+    restaurant* end;
+    int weight;
+
+public:
+
+    Edge() {
+        this->start = nullptr;
+        this->end = nullptr;
+        this->weight = 0;
+    }
+
+    Edge(restaurant* start, restaurant* end, int weight) {
+        this->start = start;
+        this->end = end;
+        this->weight = weight;
+
+    }
+    restaurant* getStart();
+    restaurant* getEnd();
+    int getWeight();
+
+};
+restaurant* Edge::getStart() {return start; }
+restaurant* Edge::getEnd() {return end; }
+int Edge::getWeight() {return weight; }
+
+class edgeList {
+
+private:
+    //created a graph based off a vector of edges
+    vector<Edge*> graph;
+
+public:
+    void insertEdge(restaurant* start, restaurant* end);
+
+};
+
+void edgeList ::insertEdge(restaurant* start, restaurant* end) {
+    //gets random weight value
+    int num = rand() % (100) + 2;
+    Edge* edge = new Edge(start, end, num);
+    graph.push_back(edge);
 
 
 }
@@ -274,14 +324,14 @@ int main()
 
     while(true && decision2 != 4) {
         cout << "Would you like to use..." << endl;
-        cout << "(Type '1') Edge List" << endl;
-        cout << "(Type '2') Adjacency List" << endl;
+        cout << "(Type '1') Adjacency List" << endl;
+        cout << "(Type '2') Edge List" << endl;
         cout << "(Type '3') Exit" << endl;
         cin >> decision1;
 
         cout << endl;
-
-        edgeList graph;
+        adjList graph;
+        edgeList graph2;
         if (decision1 == 1) {
             // Create new adjacencyList
 
@@ -298,9 +348,31 @@ int main()
                 restaurant *rest = new restaurant(restName, priceCat, foodType, breakfast, lunch, dinner, rating);
                 graph.insertEdge(rest);
             }
-            cout << "Loading Edge List..." << endl;
+            cout << "Loading Adjacency List..." << endl;
         } else if (decision1 == 2) {
-            cout << "Loading Adajacency List..." << endl;
+            //Create new edgeList
+            vector<restaurant*> storeRests;
+            //Randomly insert 100 "restaurants" into edge list
+            for (int i = 0; i < 100; i++) {
+
+                string restName = generateRandomString(12);
+                int priceCat = rand() % 3 + 1;
+                string foodType = generateRandomType();
+                bool breakfast = rand() % 2;
+                bool lunch = rand() % 2;
+                bool dinner = rand() % 2;
+                int rating = rand() % 5 + 1;
+                restaurant *rest = new restaurant(restName, priceCat, foodType, breakfast, lunch, dinner, rating);
+                storeRests.push_back(rest);
+            }
+            for(int i = 0; i < 100; i++) {
+                int rand1 = rand() % 100 + 0;
+                if(i != rand1) {
+                    graph2.insertEdge(storeRests[i], storeRests[rand1]);
+                }
+            }
+
+            cout << "Loading Edge List..." << endl;
         } else if (decision1 == 3) {
             return 0;
         }
