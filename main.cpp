@@ -2,6 +2,8 @@
 #include<map>
 #include<vector>
 #include<ctime>
+#include<set>
+#include<queue>
 using namespace std;
 
 
@@ -67,16 +69,20 @@ int restaurant::getRating()      { return rating; }
 class adjList {
 
 private:
-    map<string, vector<restaurant*>> graph;
+    map<string, pair<restaurant*, vector<pair<int, restaurant*>>>> graph;
+    map<string, pair<restaurant*, vector<pair<int, restaurant*>>>> :: iterator it;
 
 public:
-    void insertEdge(restaurant* rest);
+    void insertEdge(restaurant* rest, int w);
     void searchAllRestaurants(string decisions);
     void searchRandRestaurants(string decisions);
+    map<string , int> dijkstra(string decisions);
+    int v = 0;
 
 };
 
-void adjList::insertEdge(restaurant* rest) {
+
+void adjList::insertEdge(restaurant* rest, int w) {
 
     // The key is the restaurant type! (the edge is the restaurant type key word)
     // restaurants with the same type are connected through a vector of restaurants
@@ -86,20 +92,66 @@ void adjList::insertEdge(restaurant* rest) {
     // If restaurant type doesn't already exist
     // Will create a new key with that restaurent type
     // and the value will begin a vector of restaurant* STARTING with the restaurant in question (rest)
-    if (!graph.count(restTemp->getFoodType())) {
-        vector<restaurant*> rests;
-        rests.push_back(restTemp);
-        graph.insert({ restTemp->getFoodType(), rests });
+    if (!graph.count(restTemp->getRestName())) {
+        vector<pair<int, restaurant*>> rests;
+        rests.push_back(make_pair(w, restTemp));
+        graph.insert({restTemp->getRestName(), make_pair(restTemp, rests) });
     }
 
         // If the restaurant type DOES already exist, it pushes back the restaurant* onto the prexisting vector of restaurant*
     else {
-        graph.find(restTemp->getFoodType())->second.push_back(restTemp);
+        graph.find(restTemp->getRestName())->second.second.push_back(make_pair(w, restTemp));
     }
 
 }
-void adjList::searchAllRestaurants(string decisions) {
 
+bool sortsec(const pair<int,int> &a, const pair<int,int> &b){
+    return (a.second > b.second);
+}
+
+map<string, int> adjList::dijkstra(string decisions) {
+    // your code
+    map<string, int> d;
+    map<string, string> p;
+    priority_queue<pair<int,string>> pq;
+    set<string> visited;
+    //set<restaurant*> notVisited;
+    //visited.insert(graph.begin()->first);
+    int distance = 0;
+
+    pq.push(make_pair(0, graph.begin()->first));
+    for(auto it = graph.begin(); it != graph.end(); ++it){
+        //notVisited.insert();
+        d.insert(pair<string, int>(it->first, INT_MAX));
+        p.insert(pair<string, string> (it->first, ""));
+        //pq.push(make_pair<INT_MAX, i>);
+    }
+
+    for(int i = 0; i < v; i++){
+        string current = pq.top().second;
+        pq.pop();
+        visited.insert(current);
+        //cout << "Node: " << current << endl;
+        distance = d[current];
+        //cout << "curDistance: " << distance << endl;
+        vector<pair<int, restaurant*>> currentVector = graph[current].second;
+
+        for(int i = 0; i< currentVector.size(); i++){
+            if(visited.find(currentVector[i].second->getRestName()) == visited.end()){
+                pq.push(make_pair((-1)*currentVector[i].first, currentVector[i].second->getRestName()));
+            }
+            if (d[currentVector[i].second->getRestName()] > distance + currentVector[i].first) {
+                //cout << "Node Next: " << currentVector[i].second << endl;
+                d[currentVector[i].second->getRestName()] = distance + currentVector[i].first;
+                p[currentVector[i].second->getRestName()] = current;
+            }
+        }
+    }
+    //cout << "DEBUG" << endl;
+    return d;
+}
+void adjList::searchAllRestaurants(string decisions) {
+/*
     vector<restaurant*> res = graph.find(decisions)->second;
 
     for(int i = 0; i < res.size(); i++) {
@@ -129,11 +181,13 @@ void adjList::searchAllRestaurants(string decisions) {
         }
         cout << endl;
     }
+*/
+
 
 
 }
 void adjList::searchRandRestaurants(string decisions) {
-    vector<restaurant*> res = graph.find(decisions)->second;
+    /*vector<restaurant*> res = graph.find(decisions)->second;
     int randomVal = rand() % res.size();
     cout << "Restaurant Name: " << res.at(randomVal)->getRestName() << endl;
     cout << "Food Type: " << res.at(randomVal)->getFoodType()  << endl;
@@ -161,7 +215,7 @@ void adjList::searchRandRestaurants(string decisions) {
     }
 
     cout << endl;
-
+*/
 
 }
 /********** EDGELIST CLASS **********/
@@ -332,6 +386,7 @@ int main()
         cout << endl;
         adjList graph;
         edgeList graph2;
+
         if (decision1 == 1) {
             // Create new adjacencyList
 
@@ -346,7 +401,9 @@ int main()
                 bool dinner = rand() % 2;
                 int rating = rand() % 5 + 1;
                 restaurant *rest = new restaurant(restName, priceCat, foodType, breakfast, lunch, dinner, rating);
-                graph.insertEdge(rest);
+                int weight = rand()%100 + 1;
+                graph.v++;
+                graph.insertEdge(rest, weight);
             }
             cout << "Loading Adjacency List..." << endl;
         } else if (decision1 == 2) {
