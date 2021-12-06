@@ -365,10 +365,28 @@ int main()
                 restaurant *rest = new restaurant(restName, priceCat, foodType, breakfast, lunch, dinner, rating);
                 storeRests.push_back(rest);
             }
+            vector<string>Repeats;
             for(int i = 0; i < 100; i++) {
                 int rand1 = rand() % 100 + 0;
                 if(i != rand1) {
                     graph2.insertEdge(storeRests[i], storeRests[rand1]);
+                    string str1 = to_string(i);
+                    string str2 = to_string(rand1);
+                    str1 += str2;
+                    Repeats.push_back(str1);
+                }
+            }
+            for(int i = 0; i < 100; i++){
+                int rand1 = rand() % 100 + 0;
+                int rand2 = rand() % 100 + 0;
+                string str1 = to_string(rand1);
+                string str2 = to_string(rand2);
+                str1 += str2;
+                if(rand1 != rand2){
+                    if(find(Repeats.begin(), Repeats.end(),str1) == Repeats.end()){
+                        graph2.insertEdge(storeRests[rand1], storeRests[rand2]);
+                    }
+
                 }
             }
 
@@ -515,5 +533,4 @@ int main()
     }
 
 }
-
 
