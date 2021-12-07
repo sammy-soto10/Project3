@@ -258,7 +258,9 @@ private:
 
 public:
     void insertEdge(restaurant* start, restaurant* end);
-
+    vector<restaurant*> getVertices(string decisions);
+    void searchAllRestaurants(string decisions);
+    void searchRandRestaurants(string decisions);
 };
 
 void edgeList ::insertEdge(restaurant* start, restaurant* end) {
@@ -268,6 +270,82 @@ void edgeList ::insertEdge(restaurant* start, restaurant* end) {
     graph.push_back(edge);
 
 
+}
+vector<restaurant*> edgeList ::getVertices(string decisions){
+    vector<restaurant*>result;
+    for(int i = 0; i < graph.size(); i++){
+        restaurant* res = graph[i]->getStart();
+        if(find(result.begin(), result.end(), res) == result.end()){
+            if(res->getFoodType() == decisions) {
+                result.push_back(res);
+            }
+        }
+
+    }
+    return result;
+}
+void edgeList::searchAllRestaurants(string decisions){
+    vector<restaurant*> res = getVertices(decisions);
+
+    for(int i = 0; i < res.size(); i++) {
+        cout << "Restaurant Name: " << res.at(i)->getRestName() << endl;
+        cout << "Food Type: " << res.at(i)->getFoodType()  << endl;
+        switch (res.at(i)->getPriceCat()) {
+            case 1:
+                cout << "Price: $" << endl;
+                break;
+            case 2:
+                cout << "Price: $$" << endl;
+                break;
+            case 3:
+                cout << "Price: $$$" << endl;
+                break;
+        }
+        cout << "Rating: " << res.at(i)->getRating() << "/5 "<< endl;
+        cout << "Serves: ";
+        if(res.at(i)->getBreakfast() == 1){
+            cout << "Breakfast ";
+        }
+        if(res.at(i)->getLunch() == 1) {
+            cout << "Lunch ";
+        }
+        if(res.at(i)->getDinner() == 1){
+            cout << "Dinner ";
+        }
+        cout << endl;
+        cout << endl;
+    }
+}
+void edgeList::searchRandRestaurants(string decisions) {
+    vector<restaurant*>res = getVertices(decisions);
+    int randomVal = rand() % res.size();
+    cout << "Restaurant Name: " << res.at(randomVal)->getRestName() << endl;
+    cout << "Food Type: " << res.at(randomVal)->getFoodType()  << endl;
+    switch (res.at(randomVal)->getPriceCat()) {
+        case 1:
+            cout << "Price: $" << endl;
+            break;
+        case 2:
+            cout << "Price: $$" << endl;
+            break;
+        case 3:
+            cout << "Price: $$$" << endl;
+            break;
+    }
+    cout << "Rating: " << res.at(randomVal)->getRating() << "/5 "<< endl;
+    cout << "Serves: ";
+    if(res.at(randomVal)->getBreakfast() == 1){
+        cout << "Breakfast ";
+    }
+    if(res.at(randomVal)->getLunch() == 1) {
+        cout << "Lunch ";
+    }
+    if(res.at(randomVal)->getDinner() == 1){
+        cout << "Dinner ";
+    }
+
+    cout << endl;
+    cout << endl;
 }
 
 
@@ -389,7 +467,7 @@ int main()
 
         if (decision1 == 1) {
             // Create new adjacencyList
-
+            cout << "Loading Adjacency List..." << endl;
             //Randomly insert 100 "restaurants" into adjacency list
             for (int i = 0; i < 100; i++) {
 
@@ -405,10 +483,11 @@ int main()
                 graph.v++;
                 graph.insertEdge(rest, weight);
             }
-            cout << "Loading Adjacency List..." << endl;
+            cout << "Download Complete." << endl << endl;
         } else if (decision1 == 2) {
             //Create new edgeList
             vector<restaurant*> storeRests;
+            cout << "Loading Edge List..." << endl;
             //Randomly insert 100 "restaurants" into edge list
             for (int i = 0; i < 100; i++) {
 
@@ -447,7 +526,7 @@ int main()
                 }
             }
 
-            cout << "Loading Edge List..." << endl;
+            cout << "Download Complete." << endl << endl;
         } else if (decision1 == 3) {
             return 0;
         }
@@ -488,72 +567,72 @@ int main()
             }
 
 
-
+            string foodType;
+            switch (decision3) {
+                case 1:
+                    foodType = "American";
+                    break;
+                case 2:
+                    foodType = "Mexican";
+                    break;
+                case 3:
+                    foodType = "Italian";
+                    break;
+                case 4:
+                    foodType = "Greek";
+                    break;
+                case 5:
+                    foodType = "Sandwiches";
+                    break;
+                case 6:
+                    foodType = "French";
+                    break;
+                case 7:
+                    foodType = "Baked Goods";
+                    break;
+                case 8:
+                    foodType = "Beverages";
+                    break;
+                case 9:
+                    foodType = "Frozen Desserts";
+                    break;
+                case 10:
+                    foodType = "Chinese";
+                    break;
+                case 11:
+                    foodType = "Japanese";
+                    break;
+                case 12:
+                    foodType = "Salad";
+                    break;
+                case 13:
+                    foodType = "Chicken";
+                    break;
+                case 14:
+                    foodType = "Indian";
+                    break;
+                case 15:
+                    foodType = "Pizza";
+                    break;
+                case 16:
+                    foodType = "Seafood";
+                    break;
+                case 17:
+                    foodType = "Vegan";
+                    break;
+                case 18:
+                    foodType = "Steak";
+                    break;
+                case 19:
+                    foodType = "Theme Dining";
+                    break;
+                case 20:
+                    foodType = "Thai";
+                    break;
+            }
             /********** ALGORITHM 1 **********/
             if (decision1 == 1) {
-                string foodType;
-                switch (decision3) {
-                    case 1:
-                        foodType = "American";
-                        break;
-                    case 2:
-                        foodType = "Mexican";
-                        break;
-                    case 3:
-                        foodType = "Italian";
-                        break;
-                    case 4:
-                        foodType = "Greek";
-                        break;
-                    case 5:
-                        foodType = "Sandwiches";
-                        break;
-                    case 6:
-                        foodType = "French";
-                        break;
-                    case 7:
-                        foodType = "Baked Goods";
-                        break;
-                    case 8:
-                        foodType = "Beverages";
-                        break;
-                    case 9:
-                        foodType = "Frozen Desserts";
-                        break;
-                    case 10:
-                        foodType = "Chinese";
-                        break;
-                    case 11:
-                        foodType = "Japanese";
-                        break;
-                    case 12:
-                        foodType = "Salad";
-                        break;
-                    case 13:
-                        foodType = "Chicken";
-                        break;
-                    case 14:
-                        foodType = "Indian";
-                        break;
-                    case 15:
-                        foodType = "Pizza";
-                        break;
-                    case 16:
-                        foodType = "Seafood";
-                        break;
-                    case 17:
-                        foodType = "Vegan";
-                        break;
-                    case 18:
-                        foodType = "Steak";
-                        break;
-                    case 19:
-                        foodType = "Theme Dining";
-                        break;
-                    case 20:
-                        foodType = "Thai";
-                        break;
-                }
+
                 // Find random restaurant given an edge
                 if (decision2 == 1) {
 
@@ -577,13 +656,13 @@ int main()
                 if (decision2 == 1) {
 
                     // INSERT CODE HERE USING ALGORITHM BASED CODE TO FIND RANDOM RESTAURANT
-
+                    graph2.searchRandRestaurants(foodType);
                 }
                 // Prints all resaturants with same edge
                 if (decision2 == 2) {
 
                     // INSERT CODE HERE USING ALGORITHM BASED CODE TO FIND ALL RESTAURANT WITHIN A FOOD CATEGORY AND PRINT ALL INFORMATION ON THEM
-
+                    graph2.searchAllRestaurants(foodType);
                 }
             }
         }
