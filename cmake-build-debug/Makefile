@@ -68,10 +68,17 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /Users/samanthasoto/CLionProjects/NewProject3b/Project3
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/samanthasoto/CLionProjects/NewProject3b/Project3/cmake-build-debug
+=======
+CMAKE_SOURCE_DIR = /Users/katelynryan/CLionProjects/3530Proj3/Project3
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /Users/katelynryan/CLionProjects/3530Proj3/Project3/cmake-build-debug
+>>>>>>> 56fd916b229b859ee26f80e5d9ed02774b30c8e2
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +107,15 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/samanthasoto/CLionProjects/NewProject3b/Project3/cmake-build-debug/CMakeFiles /Users/samanthasoto/CLionProjects/NewProject3b/Project3/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/samanthasoto/CLionProjects/NewProject3b/Project3/cmake-build-debug/CMakeFiles 0
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/katelynryan/CLionProjects/3530Proj3/Project3/cmake-build-debug/CMakeFiles /Users/katelynryan/CLionProjects/3530Proj3/Project3/cmake-build-debug/CMakeFiles/progress.marks
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/katelynryan/CLionProjects/3530Proj3/Project3/cmake-build-debug/CMakeFiles 0
+>>>>>>> 56fd916b229b859ee26f80e5d9ed02774b30c8e2
 .PHONY : all
 
 # The main clean target

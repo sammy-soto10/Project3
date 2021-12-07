@@ -1,5 +1,9 @@
 Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+<<<<<<< HEAD
 Compiler: /Library/Developer/CommandLineTools/usr/bin/cc 
+=======
+Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc 
+>>>>>>> 56fd916b229b859ee26f80e5d9ed02774b30c8e2
 Build flags: 
 Id flags:  
 
@@ -9,6 +13,7 @@ ld: library not found for -lSystem
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 
+<<<<<<< HEAD
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
 Compiler: /Library/Developer/CommandLineTools/usr/bin/c++ 
 Build flags: 
@@ -20,3 +25,5 @@ ld: library not found for -lc++
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 
+=======
+>>>>>>> 56fd916b229b859ee26f80e5d9ed02774b30c8e2

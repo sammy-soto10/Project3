@@ -510,6 +510,7 @@ int main()
                     string str2 = to_string(rand1);
                     str1 += str2;
                     Repeats.push_back(str1);
+
                 }
             }
             for(int i = 0; i < 100; i++){

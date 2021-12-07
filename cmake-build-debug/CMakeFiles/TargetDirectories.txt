@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 /Users/samanthasoto/CLionProjects/NewProject3b/Project3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /Users/samanthasoto/CLionProjects/NewProject3b/Project3/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/samanthasoto/CLionProjects/NewProject3b/Project3/cmake-build-debug/CMakeFiles/Project3.dir
+=======
+/Users/katelynryan/CLionProjects/3530Proj3/Project3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/katelynryan/CLionProjects/3530Proj3/Project3/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/katelynryan/CLionProjects/3530Proj3/Project3/cmake-build-debug/CMakeFiles/Project3.dir
+>>>>>>> 56fd916b229b859ee26f80e5d9ed02774b30c8e2
