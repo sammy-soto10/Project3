@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+# Install script for directory: /Users/samanthasoto/CLionProjects/NewProject3b/Project3
+=======
 # Install script for directory: /Users/katelynryan/CLionProjects/3530Proj3/Project3
+>>>>>>> 56fd916b229b859ee26f80e5d9ed02774b30c8e2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +44,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< HEAD
+file(WRITE "/Users/samanthasoto/CLionProjects/NewProject3b/Project3/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+=======
 file(WRITE "/Users/katelynryan/CLionProjects/3530Proj3/Project3/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> 56fd916b229b859ee26f80e5d9ed02774b30c8e2
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

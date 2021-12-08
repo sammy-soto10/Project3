@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< HEAD
 /Users/katelynryan/CLionProjects/3530Proj3/Project3/main.cpp
+=======
+/Users/samanthasoto/CLionProjects/NewProject3b/Project3/main.cpp
+>>>>>>> d493e595431328c77f50dbbfa9b50ff14c80e97b
 iostream
 -
 map

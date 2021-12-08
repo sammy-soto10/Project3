@@ -64,10 +64,17 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
+CMAKE_SOURCE_DIR = /Users/samanthasoto/CLionProjects/NewProject3b/Project3
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /Users/samanthasoto/CLionProjects/NewProject3b/Project3/cmake-build-debug
+=======
 CMAKE_SOURCE_DIR = /Users/katelynryan/CLionProjects/3530Proj3/Project3
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/katelynryan/CLionProjects/3530Proj3/Project3/cmake-build-debug
+>>>>>>> 56fd916b229b859ee26f80e5d9ed02774b30c8e2
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -94,14 +101,24 @@ clean: CMakeFiles/Project3.dir/clean
 CMakeFiles/Project3.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/build
+<<<<<<< HEAD
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/samanthasoto/CLionProjects/NewProject3b/Project3/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target Project3"
+=======
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/katelynryan/CLionProjects/3530Proj3/Project3/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target Project3"
+>>>>>>> 56fd916b229b859ee26f80e5d9ed02774b30c8e2
 .PHONY : CMakeFiles/Project3.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Project3.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/samanthasoto/CLionProjects/NewProject3b/Project3/cmake-build-debug/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Project3.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/samanthasoto/CLionProjects/NewProject3b/Project3/cmake-build-debug/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/katelynryan/CLionProjects/3530Proj3/Project3/cmake-build-debug/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Project3.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/katelynryan/CLionProjects/3530Proj3/Project3/cmake-build-debug/CMakeFiles 0
+>>>>>>> 56fd916b229b859ee26f80e5d9ed02774b30c8e2
 .PHONY : CMakeFiles/Project3.dir/rule
 
 # Convenience name for target.
